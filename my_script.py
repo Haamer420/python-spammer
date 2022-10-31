@@ -1,31 +1,110 @@
-import pyautogui
+import random
 import time
 
-msg = input("Enter the message : ")
-n = input("How many times? : ")
+from pynput.keyboard import Key, Controller
 
-print("t minus")
+keyboard = Controller()
 
-count = 5
-while(count != 0):
-    print(count)
+print("===========================================")
+print("==============MESSAGE SPAMMER==============")
+print("===========================================\n")
+
+print("\nChoose an option: ")
+print("[1] Custom Message")
+print("[2] Mild Insult Preset (in English)")
+print("[3] Heavy Insult Preset (in English)")
+print("[4] Mild Insult Preset (in Urdu)")
+print("[5] Heavy Insult Preset (in Urdu)")
+
+option = int(input('\n[-] Enter your option: '))
+
+mildEnglishInsults = ['a donkey', 'a dog', 'useless', 'crap', 'a disgrace']
+heavyEnglishInsults = ['a sticky asshole', 'a much more sticky asshole', 'a dick', 'a bastard', 'a pedophile', 'a liptard', 'suicidal genmax']
+mildUrduInsults = ['bad ikhlaak', 'be tehzeeb', 'rondu', 'pagal', 'khabees', 'ghaleez', 'behiss', 'nalaiq', 'bhens ki dum']
+heavyUrduInsults = ['kutta', 'sir rehan ka chela',]
+
+if option == 1:
+    message = str(input("\nEnter the message you want to spam: "))
+    delay = float(input('Enter the delay you want in between each message (in seconds): '))
+    numOfMessages = int(input('Enter the number of messages you want to spam: '))
+    timeToPrepare = float(input('Enter the time you need to position the cursor, in seconds (5 seconds minimum): '))
+
+    if timeToPrepare < 5:
+        timeToPrepare = 5
+
+    print("\n\n[+] Please wait...")
     time.sleep(1)
-    count -= 1
 
-for i in range(0,int(n)):
-    pyautogui.typewrite(msg + '\n')
+    print(f"[+] Put the cursor on the message box, the spamming commences in {timeToPrepare} seconds...")
 
+    time.sleep(timeToPrepare)
 
-# def spamText(text="", times = 10, delay=0, separator="\n"):
-#     count = 5
-#     while(count != 0):
-#         print(f"Countdown {count}/{times}")
-#         time.sleep(1)
-#         count -= 1
-    
-#     for i in range(0, times):
-#         pyautogui.typewrite(f"{text}{separator}")
-#         time.sleep(delay)
-    
-#     print(f"Completed spamming '{text}' {times} times with {delay} delay separated with '{separator}'")
+    for i in range(numOfMessages):
+        keyboard.type(message)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+        time.sleep(delay)
+elif option == 2:
+    delay = float(input('Enter the delay you want in between each message (in seconds): '))
+    numOfMessages = int(input('Enter the number of messages you want to spam: '))
+    timeToPrepare = float(input('Enter the time you need to position the cursor, in seconds (5 seconds minimum): '))
 
+    if timeToPrepare < 5:
+        timeToPrepare = 5
+
+    print("\n\n[+] Please wait...")
+    time.sleep(1)
+
+    print(f"[+] Put the cursor on the message box, the spamming commences in {timeToPrepare} seconds...")
+
+    time.sleep(timeToPrepare)
+
+    for i in range(numOfMessages):
+        message = f'You are {random.choice(mildEnglishInsults)}'
+        keyboard.type(message)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+        time.sleep(delay)
+elif option == 3:
+    delay = float(input('Enter the delay you want in between each message (in seconds): '))
+    numOfMessages = int(input('Enter the number of messages you want to spam: '))
+    timeToPrepare = float(input('Enter the time you need to position the cursor, in seconds (5 seconds minimum): '))
+
+    if timeToPrepare < 5:
+        timeToPrepare = 5
+
+    print("\n\n[+] Please wait...")
+    time.sleep(1)
+
+    print(f"[+] Put the cursor on the message box, the spamming commences in {timeToPrepare} seconds...")
+
+    time.sleep(timeToPrepare)
+
+    for i in range(numOfMessages):
+        message = f'You are {random.choice(heavyEnglishInsults)}'
+        keyboard.type(message)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+        time.sleep(delay)
+
+elif option == 4:
+    delay = float(input('Enter the delay you want in between each message (in seconds): '))
+    numOfMessages = int(input('Enter the number of messages you want to spam: '))
+    timeToPrepare = float(input('Enter the time you need to position the cursor, in seconds (5 seconds minimum): '))
+
+    if timeToPrepare < 5:
+        timeToPrepare = 5
+
+    print("\n\n[+] Please wait...")
+    time.sleep(1)
+
+    print(f"[+] Put the cursor on the message box, the spamming commences in {timeToPrepare} seconds...")
+
+    time.sleep(timeToPrepare)
+
+    for i in range(numOfMessages):
+        message = f'tu thera {random.choice(mildUrduInsults)}'
+        keyboard.type(message)
+        keyboard.press(Key.enter)
+        keyboard.release(Key.enter)
+        time.sleep(delay)
